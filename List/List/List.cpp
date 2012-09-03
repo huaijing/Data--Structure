@@ -106,21 +106,23 @@ ListNode *FindHeadOfCircle(ListNode *head)
 
 	ListNode *pFast = head;
 	ListNode *pSlow = head;
-	
+	bool isCircle = false;
+
 	//find meeting point
-	while (pFast->next != NULL)
+	while (pFast != NULL && pFast->next != NULL)
 	{
 		pFast = pFast->next->next;
 		pSlow = pSlow->next;
 		
 		if (pFast == pSlow)
 		{
+			isCircle = true;
 			break;
 		}
 	}
 
 	//the circle does not exist
-	if (pFast->next == NULL)
+	if (!isCircle)
 	{
 		return NULL;
 	}
@@ -153,7 +155,6 @@ bool DeleteNode(ListNode *node)
 	return true;
 }
 
-
 //reverse a chain
 ListNode *ReverseList(ListNode *head)
 {
@@ -183,7 +184,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	ListNode *x3 = CreateListNode(8);
 	ListNode *x4 = CreateListNode(1);
 	ListNode *x5 = CreateListNode(6);
-
+	
 	ConnectListNodes(x1,x2);
 	ConnectListNodes(x2,x3);
 	ConnectListNodes(x3,x4);
@@ -191,7 +192,6 @@ int _tmain(int argc, _TCHAR* argv[])
 	
 	ListNode *head = x1;
 	
-	//ListNode *head2 = reverseRecursive(head);
 	ListNode *middle = FindMiddleNode(head);
 
 	int k = 2;
