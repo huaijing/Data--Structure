@@ -177,6 +177,30 @@ ListNode *ReverseList(ListNode *head)
 	return pPre;
 }
 
+//reverse a chain recursively
+//http://bbs.sei.ynu.edu.cn/viewthread.php?tid=5568
+
+ListNode *reverseRecursive(ListNode *pPre,ListNode *pCur)
+{   
+	if(pCur == NULL)
+	{
+		return NULL;
+	}
+
+	if(pCur->next == NULL)
+	{
+		pCur->next = pPre;
+		return pCur;
+	}
+	else
+	{
+		ListNode *head = reverseRecursive(pCur,pCur->next);
+		pCur->next = pPre;
+
+		return head;
+	}
+}
+
 int _tmain(int argc, _TCHAR* argv[])
 {
 	ListNode *x1 = CreateListNode(5);
@@ -184,14 +208,17 @@ int _tmain(int argc, _TCHAR* argv[])
 	ListNode *x3 = CreateListNode(8);
 	ListNode *x4 = CreateListNode(1);
 	ListNode *x5 = CreateListNode(6);
-	
+	//ListNode *x6 = CreateListNode(9);
+
 	ConnectListNodes(x1,x2);
 	ConnectListNodes(x2,x3);
 	ConnectListNodes(x3,x4);
 	ConnectListNodes(x4,x5);
+	//ConnectListNodes(x5,x6);
 	
 	ListNode *head = x1;
 	
+	//ListNode *head2 = reverseRecursive(head);
 	ListNode *middle = FindMiddleNode(head);
 
 	int k = 2;
@@ -206,5 +233,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	bool deleteNode = DeleteNode(x4);
 
 	ListNode *newHead = ReverseList(head);
+
+	ListNode *newHead2 = reverseRecursive(NULL,newHead);
 	return 0;
 }
