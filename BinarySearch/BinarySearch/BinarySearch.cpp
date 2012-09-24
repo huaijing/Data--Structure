@@ -156,7 +156,7 @@ int BinarySearchRotate(int *a, int n, int key)
 			break;
 		}
 
-		if (a[mid] >= a[high])     //上半截
+		if (a[mid] > a[high])     //上半截
 		{
 			if (key > a[mid])
 			{
@@ -237,6 +237,33 @@ int BinSearchRotateMin(int *a, int n)
 //在旋转数组中找到最小值的最左下标
 int BinSearchRotateMinL(int *a, int n)
 {	
+	/*if (NULL == a || n < 1)
+	{
+		return -1;
+	}
+
+	int low = 0;
+	int high = n - 1;
+	int ans = low;
+
+	while (low <= high && a[low] >= a[high])
+	{
+		int mid = (low + high) >> 1;
+
+		if (a[mid] <= a[high])
+		{
+			ans = mid;
+			high = mid - 1;
+		}
+		else
+		{
+			low = mid + 1;
+		}
+	}
+
+	return ans;*/
+	
+
 	if (NULL == a || n < 1)
 	{
 		return -1;
@@ -273,6 +300,50 @@ int BinSearchRotateMinL(int *a, int n)
 
 	return mid;
 }
+
+////在旋转数组中找到最小值的最右下标
+//int BinSearchRotateMinR(int *a, int n)
+//{
+//	if (NULL == a || n < 1)
+//	{
+//		return -1;
+//	}
+//
+//	int low = 0;
+//	int high = n-1;
+//	int mid = low;
+//
+//	//array has not been rotated
+//	if (a[low] <= a[high])
+//	{
+//		return -1;
+//	}
+//	
+//	int formerDist = -1;
+//
+//	while (a[low] >= a[high])
+//	{
+//		if (high - low == formerDist)    //最后low和high距离不变
+//		{
+//			mid = high;
+//			break;
+//		}
+//
+//		formerDist = high - low;
+//
+//		mid = (low + high) >> 1;
+//		if (a[mid] >= a[low])    //low在上半截
+//		{
+//			low = mid;
+//		}
+//		else if (a[mid] < a[high])   //high在下半截
+//		{
+//			high = mid;
+//		}
+//	}
+//
+//	return mid;
+//}
 
 //在旋转数组中找到最大值的最右下标
 int BinSearchRotateMaxR(int *a, int n)
@@ -313,6 +384,50 @@ int BinSearchRotateMaxR(int *a, int n)
 
 	return mid;
 }
+
+////在旋转数组中找到最大值的最左下标
+//int BinSearchRotateMaxL(int *a, int n)
+//{
+//	if (NULL == a || n < 1)
+//	{
+//		return -1;
+//	}
+//
+//	int low = 0;
+//	int high = n-1;
+//	int mid = low;
+//
+//	//array has not been rotated
+//	if (a[low] <= a[high])
+//	{
+//		return -1;
+//	}
+//
+//	int formerDist = -1;
+//
+//	while (a[low] >= a[high])
+//	{
+//		if (high - low == formerDist)    //最后low和high距离不变
+//		{
+//			mid = high;
+//			break;
+//		}
+//
+//		formerDist = high - low;
+//
+//		mid = (low + high) >> 1;
+//		if (a[mid] > a[low])    //low在上半截
+//		{
+//			low = mid;
+//		}
+//		else if (a[mid] <= a[high])   //high在下半截
+//		{
+//			high = mid;
+//		}
+//	}
+//
+//	return mid;
+//}
 
 //coding interviewing:
 //9.6 给定一个M*N的数组，它的每行按升序排列，每列也按升序排序，如何查找一个数x？
@@ -372,8 +487,14 @@ int _tmain(int argc, _TCHAR* argv[])
 	int r5 = BinarySearchRotate(c,n,7);
 	int r6 = BinSearchRotateMin(c,n);
 
+	//int d[n] = {6,7,1,1,1,1,1,4};
+	//int r7 = BinSearchRotateMinL(d,n);
+	//int d2[n] = {6,7,9,11,1,1,1,4};
+	//int r7_2 = BinSearchRotateMinL(d2,n);
+
 	int d[n] = {6,7,11,11,1,1,1,4};
 	int r7 = BinSearchRotateMinL(d,n);
+	//int r7_2 = BinSearchRotateMinR(d,n);	
 	int r8 = BinSearchRotateMaxR(d,n);
 
 	return 0;
