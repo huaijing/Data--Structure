@@ -437,22 +437,22 @@ bool FindElement(int a[4][4],int x)
 {
 	const int m = 4;
 	const int n = 4;
-	int high = 0;
-	int c = n-1;
-	while (high < m && c >= 0)
+	int row = 0;
+	int col = n-1;
+	while (row < m && col >= 0)
 	{	
-		int tmp = a[high][c];
+		int tmp = a[row][col];
 		if (tmp == x)
 		{
 			return true;
 		}
 		if (tmp > x)
 		{
-			c--;
+			col--;
 		}
 		else
 		{
-			high++;
+			row++;
 		}
 	}
 
