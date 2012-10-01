@@ -180,7 +180,7 @@ ListNode *ReverseList(ListNode *head)
 //reverse a chain recursively
 //http://bbs.sei.ynu.edu.cn/viewthread.php?tid=5568
 
-ListNode *reverseRecursive(ListNode *pPre,ListNode *pCur)
+ListNode *ReverseRecursive(ListNode *pPre,ListNode *pCur)
 {   
 	if(pCur == NULL)
 	{
@@ -194,11 +194,24 @@ ListNode *reverseRecursive(ListNode *pPre,ListNode *pCur)
 	}
 	else
 	{
-		ListNode *head = reverseRecursive(pCur,pCur->next);
+		ListNode *head = ReverseRecursive(pCur,pCur->next);
 		pCur->next = pPre;
 
 		return head;
 	}
+}
+
+//output a chain reversely
+void OutputReversely(ListNode *head)
+{
+	if (head == NULL)
+	{
+		return;
+	}
+
+	OutputReversely(head->next);
+
+	cout<<head->data<<" ";
 }
 
 int _tmain(int argc, _TCHAR* argv[])
@@ -234,6 +247,8 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	ListNode *newHead = ReverseList(head);
 
-	ListNode *newHead2 = reverseRecursive(NULL,newHead);
+	ListNode *newHead2 = ReverseRecursive(NULL,newHead);
+
+	OutputReversely(newHead2);
 	return 0;
 }

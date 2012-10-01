@@ -47,4 +47,7 @@ bool DeleteNode(ListNode *node);
 ListNode *ReverseList(ListNode *head);
 
 //reverse a chain recursively
-ListNode *reverseRecursive(ListNode *pPre,ListNode *pCur);
+ListNode *ReverseRecursive(ListNode *pPre,ListNode *pCur);
+
+//output a chain reversely
+void OutputReversely(ListNode *head);
