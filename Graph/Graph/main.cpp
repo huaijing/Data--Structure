@@ -20,6 +20,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	cout<<"*********************************************************\n";
 	G.BreadthFirstSearch();
 	G.DepthFirstSearch();
+	G.DepthFirstSearchIteratively();
 
 	string file2 = "weightedAdjacencyMatrix.txt";
 	G.LoadGraph(file2,2);

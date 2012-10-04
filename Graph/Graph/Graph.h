@@ -1,3 +1,4 @@
+//Graph.h
 #pragma once;
 
 #include <vector>
@@ -18,6 +19,9 @@ public:
 	void BreadthFirstSearch();
 	void DepthFirstSearch();
 	void DFS(int begin, vector<bool> &visitedMap);
+
+	void DepthFirstSearchIteratively();
+	void DFSIteratively(int begin, vector<bool> &visitedMap);
 
 //private:
 	int vertexNumber;
