@@ -1,4 +1,3 @@
-//Edge.h
 #pragma once;
 
 const int maxWeight = 999;

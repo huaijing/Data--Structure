@@ -1,9 +1,7 @@
-//Graph.cpp
 #include "stdafx.h"
 
 #include <fstream>
 #include <queue>
-#include <stack>
 #include <algorithm>
 #include <iostream>
 using namespace std;
@@ -102,7 +100,7 @@ void Graph::BreadthFirstSearch()
 void Graph::DepthFirstSearch()
 {
 	cout<<"\nDepth first search graph:\n ";
-	if (adjacencyMatrix.size() == 0)
+	if (adjacencyMatrix.size() == NULL)
 	{
 		return;
 	}
@@ -151,77 +149,6 @@ void Graph::DFS(int begin, vector<bool> &visitedMap)
 				next = i;
 				break;
 			}
-		}
-	}
-}
-
-void Graph::DepthFirstSearchIteratively()
-{
-	cout<<"\nDepth first search graph iteratively:\n ";
-	if (adjacencyMatrix.size() == 0)
-	{
-		return;
-	}
-
-	//visited map
-	vector<bool> visitedMap(vertexNumber);
-	for (int i = 0;i < vertexNumber;i++)
-	{		
-		visitedMap[i] = false;
-	}
-
-	//visit the first node: 0
-	int begin = 0;
-	visitedMap[begin] = true;
-	cout<<begin<<" ";
-
-	DFSIteratively(begin,visitedMap);
-}
-
-void Graph::DFSIteratively(int begin, vector<bool> &visitedMap)
-{	
-	int visitedNodeNum = 1; //numbers of nodes have been visited
-
-	//find the first node connected to begin
-	int next = -1;
-	for (int i = 0;i < vertexNumber;i++)
-	{
-		if (adjacencyMatrix[begin][i] != 0 && !visitedMap[i])
-		{
-			next = i;
-			break;
-		}
-	}
-
-	if (next == -1)
-	{
-		return;
-	}
-
-	stack<int> S;
-	while (visitedNodeNum < visitedMap.size())
-	{
-		if (next != -1)
-		{		
-			visitedMap[next] = true;	
-			S.push(next);
-			visitedNodeNum++;
-			cout<<next<<" ";
-		}
-
-		next = -1;
-		//find the next node connected to S.top() 
-		for (int i = 0;i < vertexNumber;i++)
-		{
-			if (adjacencyMatrix[S.top()][i] != 0 && !visitedMap[i])
-			{
-				next = i;
-				break;
-			}
-		}
-		if (next == -1 && !S.empty())
-		{
-			S.pop();        //Backtracking
 		}
 	}
 }
