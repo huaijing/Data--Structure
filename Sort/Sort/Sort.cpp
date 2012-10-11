@@ -4,7 +4,7 @@
 #include <limits> 
 #include "Board.h"
 #include "Heap.h"
-
+#include <stack>
 using namespace std;
 
 //Selection 
@@ -120,6 +120,87 @@ int QuickSort(int a[],int left,int right)
 
 	QuickSort(a,left,j-1);
 	QuickSort(a,j+1,right);
+}
+
+//select an element as a pivot, the ones larger than are put on the right, others are put on the left
+int Partition(int a[],int left,int right)
+{
+	int pivot = a[right];
+	int i = left-1;
+
+	for (int j=left;j<right;j++)
+	{
+		if (a[j] <= pivot)
+		{
+			++i;
+			Swap(&a[i],&a[j]);
+		}
+	}
+
+	Swap(&a[++i],&a[right]);
+	return i;
+}
+
+void QuickSort2(int a[],int left,int right)
+{
+	if (NULL == a)
+	{
+		return;
+	}
+
+	if (left < right)
+	{
+		int middle = Partition(a,left,right);
+		QuickSort2(a,left,middle-1);
+		QuickSort2(a,middle+1,right);
+	}
+}
+
+void QuickSort2Iteratively(int a[],int left,int right)
+{
+	if (NULL == a)
+	{
+		return;
+	}
+
+	stack<int> S;
+	if (left < right)
+	{
+		int middle = Partition(a,left,right);
+		if (left < middle-1)
+		{
+			S.push(left);
+			S.push(middle-1);
+		}
+		if (right > middle+1)
+		{
+			S.push(middle+1);
+			S.push(right);
+		}
+		
+		//store the boundaries in stack
+		while(!S.empty())
+		{
+			int q = S.top();
+			S.pop();
+
+			int p = S.top();
+			S.pop();
+
+			int m = Partition(a,p,q);  //conversely
+
+			if (p < m-1)
+			{
+				S.push(p);
+				S.push(m-1);
+			}
+			if (q > m+1)
+			{
+				S.push(m+1);
+				S.push(q);
+			}
+		}
+	}
 }
 
 //Merge (Divide and conquer)
@@ -241,6 +322,12 @@ int _tmain(int argc, _TCHAR* argv[])
 	int array5[len] = {6,3,1,7,8,9,2,3};//{5,6,3,9,4,0,3,7};//{9,1,2,3,4,5,6,7};
 	int result5 = 0; 
 	result5 = QuickSort(array5,0,len-1);	
+
+	int array42[len] = {5,6,3,9,4,0,3,7};
+	QuickSort2(array42,0,len-1);
+
+	int array43[len] = {5,6,3,9,4,0,3,7};
+	QuickSort2Iteratively(array43,0,len-1);
 
 	int array6[len] = {5,6,3,9,4,0,3,7};//{9,1,2,3,4,5,6,7};
 	Heap heap(array6,len);
