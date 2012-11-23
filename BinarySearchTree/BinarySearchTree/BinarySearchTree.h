@@ -12,9 +12,14 @@ BinarySearchTree *CreateBinarySearchTree(int value);
 
 void ConnectTreeNodes(BinarySearchTree* pParent, BinarySearchTree* pLeft,BinarySearchTree* pRight);
 
+//minimum node of the tree k
+BinarySearchTree *Minimum(BinarySearchTree* k);
+
 //search node
-BinarySearchTree *Search(BinarySearchTree* root,BinarySearchTree* k);
+bool Search(BinarySearchTree* root,BinarySearchTree* k);
 
 //find successor
 BinarySearchTree *Successor(BinarySearchTree* k);
 
+//insert node
+void Insert(BinarySearchTree *root,BinarySearchTree *t);

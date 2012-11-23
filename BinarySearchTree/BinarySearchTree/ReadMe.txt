@@ -1,29 +1,33 @@
-﻿========================================================================
-    控制台应用程序：BinarySearchTree 项目概述
+========================================================================
+    CONSOLE APPLICATION : BinarySearchTree Project Overview
 ========================================================================
 
-应用程序向导已为您创建了此 BinarySearchTree 应用程序。
+AppWizard has created this BinarySearchTree application for you.
 
-本文件概要介绍组成 BinarySearchTree 应用程序的
-的每个文件的内容。
+This file contains a summary of what you will find in each of the files that
+make up your BinarySearchTree application.
 
 
 BinarySearchTree.vcproj
-    这是使用应用程序向导生成的 VC++ 项目的主项目文件，
-    其中包含生成该文件的 Visual C++ 的版本信息，以及有关使用应用程序向导选择的平台、配置和项目功能的信息。
+    This is the main project file for VC++ projects generated using an Application Wizard.
+    It contains information about the version of Visual C++ that generated the file, and
+    information about the platforms, configurations, and project features selected with the
+    Application Wizard.
 
 BinarySearchTree.cpp
-    这是主应用程序源文件。
+    This is the main application source file.
 
 /////////////////////////////////////////////////////////////////////////////
-其他标准文件：
+Other standard files:
 
 StdAfx.h, StdAfx.cpp
-    这些文件用于生成名为 BinarySearchTree.pch 的预编译头 (PCH) 文件和名为 StdAfx.obj 的预编译类型文件。
+    These files are used to build a precompiled header (PCH) file
+    named BinarySearchTree.pch and a precompiled types file named StdAfx.obj.
 
 /////////////////////////////////////////////////////////////////////////////
-其他注释：
+Other notes:
 
-应用程序向导使用“TODO:”注释来指示应添加或自定义的源代码部分。
+AppWizard uses "TODO:" comments to indicate parts of the source code you
+should add to or customize.
 
 /////////////////////////////////////////////////////////////////////////////
