@@ -12,16 +12,12 @@ void Heap::MaxHeapify(int i)
 
 	int l = 2*i+1;  //left(i)
 	int r = 2*i+2; //right(i)
-	int largest = 0;
+	int largest = i;
 
 	//find the max element from  left(i) ,right(i) and parent. 
-	if (l < heapSize && array[l] > array[i])
+	if (l < heapSize && array[l] > array[largest])
 	{
 		largest = l;
-	}
-	else
-	{
-		largest = i;
 	}
 	if (r < heapSize && array[r] > array[largest])
 	{
